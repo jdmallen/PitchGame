@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace PitchGame.Logic {
     public interface IPitch {
-
-        List<IPlayer> GetPlayers();
+        void BeginBettingRound();
+        void BeginPlay();
         List<Card> GetCardsInPlay();
         Card GetLastCardPlayed();
-        CardSuit GetTrumpSuit();
-        IPlayer GetStartingPlayer();
+        Player GetStartingPlayer();
+        void ScoreRound();
+        void GetTeamScores();
 
     }
 

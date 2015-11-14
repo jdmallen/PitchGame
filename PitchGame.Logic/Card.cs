@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PitchGame.Logic {
     public class Card {
@@ -64,6 +59,23 @@ namespace PitchGame.Logic {
             }
         }
 
+        public ConsoleColor CardColor {
+            get {
+                switch (Suit) {
+                    case CardSuit.Spades:
+                        return Console.ForegroundColor = ConsoleColor.White;
+                    case CardSuit.Hearts:
+                        return Console.ForegroundColor = ConsoleColor.Red;
+                    case CardSuit.Diamonds:
+                        return Console.ForegroundColor = ConsoleColor.Cyan;
+                    case CardSuit.Clubs:
+                        return Console.ForegroundColor = ConsoleColor.Green;
+                    default:
+                        return Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+        }
+
         public bool IsVisible { get; set; }
         public bool IsInPlay { get; set; }
         public Image CardImage { get; set; }
@@ -74,7 +86,7 @@ namespace PitchGame.Logic {
         }
 
         public override string ToString() {
-            return ShortSuitName + " " + ShortValueName + " (" + LongValueName + " of " + LongSuitName + ")";
+            return ShortValueName + " " + ShortSuitName + " (" + LongValueName + " of " + LongSuitName + ")";
         }
     }
 }

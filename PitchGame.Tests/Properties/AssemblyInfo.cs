@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PitchGame.Logic")]
+[assembly: AssemblyTitle("PitchGame.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PitchGame.Logic")]
+[assembly: AssemblyProduct("PitchGame.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fd7d9894-4753-4173-99e3-a99172c2fdde")]
+[assembly: Guid("ef43df4a-2e38-4023-b60e-82f365963fce")]
 
 // Version information for an assembly consists of the following four values:
 //

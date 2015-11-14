@@ -33,5 +33,33 @@ namespace PitchGame.Logic {
         public void ShuffleDeck() {
             Cards.Shuffle();
         }
+
+        public override string ToString() {
+            StringBuilder bldr = new StringBuilder();
+            ConsoleColor foreColor = Console.ForegroundColor;
+            bldr.AppendLine("Cards in deck (" + Cards.Count + "):");
+            if (Cards.Count == 0) {
+                bldr.AppendLine("    No cards in deck.");
+            } else {
+                foreach (Card c in Cards) {
+                    bldr.AppendLine("    " + c);
+                }
+            }
+            return bldr.ToString();
+        }
+
+        public void ColoredDeckToConsole() {
+            ConsoleColor foreColor = Console.ForegroundColor;
+            Console.WriteLine("Cards in deck (" + Cards.Count + "):");
+            if (Cards.Count == 0) {
+                Console.WriteLine("    No cards in deck.");
+            } else {
+                foreach (Card c in Cards) {
+                    Console.ForegroundColor = c.CardColor;
+                    Console.WriteLine("    " + c);
+                }
+            }
+            Console.ForegroundColor = foreColor;
+        }
     }
 }

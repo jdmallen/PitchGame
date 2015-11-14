@@ -5,7 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PitchGame.Logic {
-    public enum CardSuit {
+    public enum Bet {
+        Two,
+        Three,
+        Four,
+        Pass
+    }
+
+public enum CardSuit {
         Spades,
         Hearts,
         Diamonds,
