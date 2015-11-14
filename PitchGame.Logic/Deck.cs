@@ -11,12 +11,12 @@ namespace PitchGame.Logic {
 
         public Deck() {
             if (Cards == null) {
-                BuildDeck();
+                RebuildDeck();
             }
             Cards.Shuffle();
         }
 
-        private static void BuildDeck() {
+        public static void RebuildDeck() {
             Cards = new List<Card>(52);
             foreach (CardSuit s in GetValues(typeof(CardSuit)).Cast<CardSuit>()) {
                 foreach (CardValue v in
@@ -60,6 +60,24 @@ namespace PitchGame.Logic {
                 }
             }
             Console.ForegroundColor = foreColor;
+        }
+
+        public List<Card> GetPlayerCards() {
+            List<Card> playerCards = new List<Card>(6);
+            bool containsFaceCard = false;
+            while (!containsFaceCard) {
+                if (playerCards.Count > 0) {
+                    Cards.AddRange(playerCards.Take(playerCards.Count));
+                    playerCards.RemoveRange(0, playerCards.Count);
+                    ShuffleDeck();
+                }
+                playerCards.AddRange(Cards.Take(6));
+                Cards.RemoveRange(0, 6);
+                if (playerCards.Any(card => card.Value > CardValue.Ten)) {
+                    containsFaceCard = true;
+                }
+            }
+            return playerCards;
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PitchGame.Logic {
+﻿namespace PitchGame.Logic {
     public enum Bet {
         Two,
         Three,
@@ -12,7 +6,7 @@ namespace PitchGame.Logic {
         Pass
     }
 
-public enum CardSuit {
+    public enum CardSuit {
         Spades,
         Hearts,
         Diamonds,
@@ -20,8 +14,7 @@ public enum CardSuit {
     }
 
     public enum CardValue {
-        Ace = 1,
-        Two,
+        Two = 2,
         Three,
         Four,
         Five,
@@ -32,6 +25,7 @@ public enum CardSuit {
         Ten,
         Jack,
         Queen,
-        King
+        King,
+        Ace
     }
 }
