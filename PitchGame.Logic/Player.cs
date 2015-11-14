@@ -9,15 +9,16 @@ namespace PitchGame.Logic {
         public Team PlayerTeam { get; set; }
         public Bet PlayerBet { get; set; }
         
-        public Player(ref Team team, List<Card> cards, string name = null) {
+        public Player(ref Team team, string name = null) {
             _playerCount++;
             if (string.IsNullOrWhiteSpace(name)) {
                 PlayerName = "Player " + _playerCount;
             } else {
                 PlayerName = name;
             }
+            team.AddPlayer(this);
             PlayerTeam = team;
-            PlayerCards = cards;
+            PlayerCards = new List<Card>(6);
         }
 
         public override string ToString() {

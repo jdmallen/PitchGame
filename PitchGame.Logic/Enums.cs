@@ -1,9 +1,17 @@
 ﻿namespace PitchGame.Logic {
+    public enum TeamConfiguration {
+        TwoVsTwo,
+        TwoVsTwoVsTwo,
+        ThreeVsThree,
+        TwoVsTwoVsTwoVsTwo,
+        FourVsFour
+    }
+
     public enum Bet {
+        Pass,
         Two,
         Three,
-        Four,
-        Pass
+        Four
     }
 
     public enum CardSuit {

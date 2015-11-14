@@ -7,7 +7,7 @@ using static System.Enum;
 
 namespace PitchGame.Logic {
     public class Deck {
-        public static List<Card> Cards { get; private set; }
+        public List<Card> Cards { get; private set; }
 
         public Deck() {
             if (Cards == null) {
@@ -16,7 +16,7 @@ namespace PitchGame.Logic {
             Cards.Shuffle();
         }
 
-        public static void RebuildDeck() {
+        public void RebuildDeck() {
             Cards = new List<Card>(52);
             foreach (CardSuit s in GetValues(typeof(CardSuit)).Cast<CardSuit>()) {
                 foreach (CardValue v in
@@ -66,6 +66,9 @@ namespace PitchGame.Logic {
             List<Card> playerCards = new List<Card>(6);
             bool containsFaceCard = false;
             while (!containsFaceCard) {
+                if (!Cards.Any(card => card.Value > CardValue.Ten)) {
+                    throw new NoMoreFaceCardsException();
+                }
                 if (playerCards.Count > 0) {
                     Cards.AddRange(playerCards.Take(playerCards.Count));
                     playerCards.RemoveRange(0, playerCards.Count);
