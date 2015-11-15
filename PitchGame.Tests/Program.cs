@@ -32,7 +32,7 @@ namespace PitchGame.Tests {
 
                     pitch.DealCards();
 
-                    foreach (Player p in pitch.Players) {
+                    foreach (Player p in pitch.GetPlayers()) {
                         Console.WriteLine(p.ToString());
                     }
                 }
