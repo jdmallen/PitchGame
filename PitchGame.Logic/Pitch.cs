@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Diagnostics;
+using System.Linq;
 
 namespace PitchGame.Logic {
-    public class Pitch : IPitch, IDisposable {
+    public class Pitch : /*IPitch,*/ IDisposable {
         private List<Player> _players;
         public Deck GameDeck { get; private set; }
         public List<Team> Teams { get; set; }
         public CardSuit? Trump { get; private set; }
-        public Dictionary<Team, Bet> Bets { get; set; }
+        public KeyValuePair<Bet, Team> HighBet { get; set; }
+        public Dictionary<Bet, Player> Bets { get; set; } 
         public int NumberOfPlayersPerTeam { get; set; }
         public int NumberOfTeams { get; set; }
         private TeamConfiguration _config;
@@ -49,7 +51,8 @@ namespace PitchGame.Logic {
             Teams = new List<Team>();
             _players = new List<Player>(NumberOfPlayersPerTeam*NumberOfTeams);
             Trump = null;
-            Bets = new Dictionary<Team, Bet>();
+            HighBet = new KeyValuePair<Bet, Team>();
+            Bets = new Dictionary<Bet, Player>();
         }
 
         public void AddTeam(string teamName = null) {
@@ -70,15 +73,16 @@ namespace PitchGame.Logic {
         } 
 
         public Dictionary<Player, Bet> BetsRequest() {
-            Dictionary<Player,Bet> bets = new Dictionary<Player, Bet>();
-            foreach (Player p in _players) {
-                
-            }
-            return null;
+            return _players.ToDictionary(p => p, p => Bet.Pass);
         }
 
-        public void BetsResponse(Dictionary<Player, Bet> bets) {
-            
+        public void BetsResponse(Dictionary<Bet,Player> bets) {
+//            if (bets.Count(x => x.Value) > 1)
+            KeyValuePair<Bet, Player> highBet =
+                bets.FirstOrDefault(x => x.Value == bets.Max(y => y.Value));
+            HighBet = new KeyValuePair<Bet, Team>(highBet.Key,
+                highBet.Value.PlayerTeam);
+            Bets = bets;
         }
 
         public void BeginBettingRound() {
@@ -118,7 +122,7 @@ namespace PitchGame.Logic {
             Teams = null;
             _players = null;
             Trump = null;
-            Bets = null;
+            HighBet = null;
             NumberOfPlayersPerTeam = 0;
             NumberOfTeams = 0;
             _config = TeamConfiguration.TwoVsTwo;

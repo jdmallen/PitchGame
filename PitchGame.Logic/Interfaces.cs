@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PitchGame.Logic {
-    public interface IPitch {
-        void BeginBettingRound();
-        void BeginPlay();
-        List<Card> GetCardsInPlay();
-        Card GetLastCardPlayed();
-        Player GetStartingPlayer();
-        void ScoreRound();
-        void GetTeamScores();
-
-    }
-
-    public interface IPlayer {}
+//    public interface IPitch {
+//        void BeginBettingRound();
+//        void BeginPlay();
+//        List<Card> GetCardsInPlay();
+//        Card GetLastCardPlayed();
+//        Player GetStartingPlayer();
+//        void ScoreRound();
+//        void GetTeamScores();
+//
+//    }
+//
+//    public interface IPlayer {}
     
 }
